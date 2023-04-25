@@ -76,7 +76,18 @@ sail php artisan make:model Versiculo --migration
 
 ## <a name="parte4">4 - Seção 4: Create, Read, Update e Delete. Criação de EndPoints Insomnia</a>
 
+- 7. Testamentos
 
+```bash
+
+sail php artisan make:controller TestamentoController --api
+
+   INFO  Controller [app/Http/Controllers/TestamentoController.php] created successfully.  
+
+```
+
+- 8. Livros
+- 9. Versículos
 
 [Voltar ao Índice](#indice)
 
