@@ -3,7 +3,6 @@
 https://www.udemy.com/course/api-rest-com-laravel-9-na-pratica
 
 
-
 ## <a name="indice">Índice</a>
 
 1. [Seção 1: Introdução](#parte1)     
@@ -25,7 +24,12 @@ https://www.udemy.com/course/api-rest-com-laravel-9-na-pratica
 
 ## <a name="parte1">1 - Seção 1: Introdução</a>
 
+- 1. Introdução e Estrutura de Pastas do sistema.
 
+[https://candied-gooseberry-205.notion.site/Criando-API-REST-com-Laravel-9-606573f493e9494b9b7abc7ac1298828](https://candied-gooseberry-205.notion.site/Criando-API-REST-com-Laravel-9-606573f493e9494b9b7abc7ac1298828)
+
+- 2. Conceitos importantes
+- 3. API REST
 
 [Voltar ao Índice](#indice)
 
@@ -34,7 +38,8 @@ https://www.udemy.com/course/api-rest-com-laravel-9-na-pratica
 
 ## <a name="parte2">2 - Seção 2: Mãos na massa</a>
 
-
+- 4. Ambiente de Desenvolvimento
+- 5. Criação do Projeto
 
 [Voltar ao Índice](#indice)
 
@@ -43,6 +48,25 @@ https://www.udemy.com/course/api-rest-com-laravel-9-na-pratica
 
 ## <a name="parte3">3 - Seção 3: Migrations</a>
 
+- 6. Criação das tabelas
+
+
+```bash
+ sail php artisan make:model Testamento --migration
+
+   INFO  Model [app/Models/Testamento.php] created successfully.  
+   INFO  Migration [database/migrations/2023_04_25_184754_create_testamentos_table.php] created successfully. 
+
+sail php artisan make:model Livro --migration
+
+   INFO  Model [app/Models/Livro.php] created successfully.  
+   INFO  Migration [database/migrations/2023_04_25_185801_create_livros_table.php] created successfully.  
+
+sail php artisan make:model Versiculo --migration
+
+   INFO  Model [app/Models/Versiculo.php] created successfully.  
+   INFO  Migration [database/migrations/2023_04_25_185835_create_versiculos_table.php] created successfully.  
+```
 
 
 [Voltar ao Índice](#indice)
