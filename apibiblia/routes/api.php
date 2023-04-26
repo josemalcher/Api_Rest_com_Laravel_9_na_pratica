@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\LivroController;
-use App\Http\Controllers\TestamentoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{TestamentoController, VersiculoController, LivroController};
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +30,12 @@ Route::get( '/livro/{id}', [LivroController::class, 'show']);
 Route::put( '/livro/{id}', [LivroController::class, 'update']);
 Route::post('/livro', [LivroController::class, 'store']);
 Route::delete('/livro/{id}', [LivroController::class, 'destroy']);
+
+Route::get( '/versiculo', [VersiculoController::class, 'index']);
+Route::get( '/versiculo/{id}', [VersiculoController::class, 'show']);
+Route::put( '/versiculo/{id}', [VersiculoController::class, 'update']);
+Route::post('/versiculo', [VersiculoController::class, 'store']);
+Route::delete('/versiculo/{id}', [VersiculoController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
