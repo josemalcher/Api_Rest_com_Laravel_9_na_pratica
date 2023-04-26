@@ -20,7 +20,15 @@ class VersiculoController extends Controller
      */
     public function store(Request $request)
     {
-        return Versiculo::create($request->all());
+        if (Versiculo::create($request->all())) {
+            return response()->json([
+                'message' => 'Versiculo salvo com sucesso'
+            ], 201);
+        }
+        return response()->json([
+            'message' => 'ERRO ao salvar Versiculo'
+        ], 404);
+        //return Versiculo::create($request->all());
     }
 
     /**
@@ -28,7 +36,14 @@ class VersiculoController extends Controller
      */
     public function show(string $versiculo)
     {
-        return Versiculo::findOrFail($versiculo);
+        $versiculo = Versiculo::find($versiculo);
+        if ($versiculo) {
+            return $versiculo;
+        }
+        return response()->json([
+            'message' => 'ERRO Pesquisar Versiculo'
+        ],404);
+        //return Versiculo::findOrFail($versiculo);
     }
 
     /**
@@ -36,9 +51,14 @@ class VersiculoController extends Controller
      */
     public function update(Request $request, string $versiculo)
     {
-        $versiculo = Versiculo::findOrFail($versiculo);
-        $versiculo->update($request->all());
-        return $versiculo;
+        $versiculo = Versiculo::find($versiculo);
+        if ($versiculo) {
+            $versiculo->update($request->all());
+            return $versiculo;
+        }
+        return response()->json([
+            'message' => 'ERRO ao ATUALIZAR Versiculo'
+        ],404);
     }
 
     /**
@@ -46,6 +66,14 @@ class VersiculoController extends Controller
      */
     public function destroy(string $versiculo)
     {
-        return Versiculo::destroy($versiculo);
+        if (Versiculo::destroy($versiculo)) {
+            return response()->json([
+                'message' => 'Versiculo DELETADO com sucesso'
+            ], 201);
+        }
+        return response()->json([
+            'message' => 'ERRO ao DELETAR Versiculo'
+        ],404);
+        //return Versiculo::destroy($versiculo);
     }
 }

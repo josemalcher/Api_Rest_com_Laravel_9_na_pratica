@@ -20,7 +20,14 @@ class LivroController extends Controller
      */
     public function store(Request $request)
     {
-        return Livro::create($request->all());
+        if (Livro::create($request->all())) {
+            return response()->json([
+                'message' => 'Livro Cadastrado com sucesso'
+            ], 201);
+        }
+        return response()->json([
+            'message' => 'ERRO AO CADASTRAR'
+        ], 404);
     }
 
     /**
@@ -28,7 +35,14 @@ class LivroController extends Controller
      */
     public function show(string $livro)
     {
-        return Livro::findOrFail($livro);
+        $livro = Livro::find($livro);
+        if ($livro) {
+            return $livro;
+        }
+        return response()->json([
+            'message' => 'ERRO Pesquisar Livro'
+        ],404);
+        // return Livro::findOrFail($livro);
     }
 
     /**
@@ -36,9 +50,14 @@ class LivroController extends Controller
      */
     public function update(Request $request, string $livro)
     {
-        $livro = Livro::findOrFail($livro);
-        $livro->update($request->all());
-        return $livro;
+        $livro = Livro::find($livro);
+        if ($livro) {
+            $livro->update($request->all());
+            return $livro;
+        }
+        return response()->json([
+            'message' => 'ERRO ao ATUALIZAR Livro'
+        ],404);
     }
 
     /**
@@ -46,6 +65,14 @@ class LivroController extends Controller
      */
     public function destroy(string $livro)
     {
-        return Livro::destroy($livro);
+        if (Livro::destroy($livro)) {
+            return response()->json([
+                'message' => 'Livro DELETADO com sucesso'
+            ], 201);
+        }
+        return response()->json([
+            'message' => 'ERRO ao DELETAR Livro'
+        ],404);
+        // return Livro::destroy($livro);
     }
 }

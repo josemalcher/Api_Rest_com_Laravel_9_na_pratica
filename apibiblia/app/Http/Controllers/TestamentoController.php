@@ -20,7 +20,15 @@ class TestamentoController extends Controller
      */
     public function store(Request $request)
     {
-        return Testamento::create($request->all());
+        if (Testamento::create($request->all())) {
+            return response()->json([
+                'message' => 'Testamento salvo com sucesso'
+            ], 201);
+        }
+        return response()->json([
+            'message' => 'ERRO ao salvar Testamento'
+        ], 404);
+        //return Testamento::create($request->all());
     }
 
     /**
@@ -28,7 +36,14 @@ class TestamentoController extends Controller
      */
     public function show(string $testamento)
     {
-        return Testamento::findOrFail($testamento);
+        $testamento = Testamento::find($testamento);
+        if ($testamento) {
+            return $testamento;
+        }
+        return response()->json([
+            'message' => 'ERRO Pesquisar Testamento'
+        ],404);
+        //return Testamento::findOrFail($testamento);
     }
 
     /**
@@ -36,10 +51,14 @@ class TestamentoController extends Controller
      */
     public function update(Request $request, string $testamento)
     {
-        $testamento = Testamento::findOrFail($testamento);
-
-        $testamento->update($request->all());
-        return $testamento;
+        $testamento = Testamento::find($testamento);
+        if ($testamento) {
+            $testamento->update($request->all());
+            return $testamento;
+        }
+        return response()->json([
+            'message' => 'ERRO ao ATUALIZAR Testamento'
+        ],404);
     }
 
     /**
@@ -47,6 +66,14 @@ class TestamentoController extends Controller
      */
     public function destroy(string $testamento)
     {
-        return Testamento::destroy($testamento);
+        if (Testamento::destroy($testamento)) {
+            return response()->json([
+                'message' => 'Testamento DELETADO com sucesso'
+            ], 201);
+        }
+        return response()->json([
+            'message' => 'ERRO ao DELETAR testamento'
+        ],404);
+        //return Testamento::destroy($testamento);
     }
 }
