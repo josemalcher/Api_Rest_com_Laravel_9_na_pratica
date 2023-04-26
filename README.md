@@ -141,6 +141,23 @@ Route::apiResources([
 ## <a name="parte6">6 - Seção 6: Autenticação Sanctum</a>
 
 - 12. Introdução
+
+- [https://laravel.com/docs/10.x/sanctum#main-content](https://laravel.com/docs/10.x/sanctum#main-content)
+
+```bash
+sail php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"     
+
+   INFO  Publishing assets.  
+
+  Copying directory [vendor/laravel/sanctum/database/migrations] to [database/migrations] ..................................................... DONE
+  File [config/sanctum.php] already exists ................................................................................................. SKIPPED 
+
+sail php artisan migrate                                                                              
+
+   INFO  Nothing to migrate.  
+
+```
+
 - 13. Registrando usuário e emitindo Token
 - 14. Login
 - 15. Protegendo as rotas
