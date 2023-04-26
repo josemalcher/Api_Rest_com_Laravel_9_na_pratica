@@ -159,6 +159,14 @@ sail php artisan migrate
 ```
 
 - 13. Registrando usuário e emitindo Token
+
+```bash
+sail php artisan make:controller AuthController           
+
+   INFO  Controller [app/Http/Controllers/AuthController.php] created successfully.  
+
+```
+
 - 14. Login
 - 15. Protegendo as rotas
 - 16. Logout
