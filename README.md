@@ -96,7 +96,42 @@ sail php artisan make:controller TestamentoController --api
 
 ## <a name="parte5">5 - Seção 5: Melhorias</a>
 
+- 10. Rotas
 
+```php
+//Route::get( '/testamento', [TestamentoController::class, 'index']);
+//Route::get( '/testamento/{id}', [TestamentoController::class, 'show']);
+//Route::put( '/testamento/{id}', [TestamentoController::class, 'update']);
+//Route::post('/testamento', [TestamentoController::class, 'store']);
+//Route::delete('/testamento/{id}', [TestamentoController::class, 'destroy']);
+//
+//Route::get( '/livro', [LivroController::class, 'index']);
+//Route::get( '/livro/{id}', [LivroController::class, 'show']);
+//Route::put( '/livro/{id}', [LivroController::class, 'update']);
+//Route::post('/livro', [LivroController::class, 'store']);
+//Route::delete('/livro/{id}', [LivroController::class, 'destroy']);
+//
+//Route::get( '/versiculo', [VersiculoController::class, 'index']);
+//Route::get( '/versiculo/{id}', [VersiculoController::class, 'show']);
+//Route::put( '/versiculo/{id}', [VersiculoController::class, 'update']);
+//Route::post('/versiculo', [VersiculoController::class, 'store']);
+//Route::delete('/versiculo/{id}', [VersiculoController::class, 'destroy']);
+
+/*
+Route::apiResource('testamento',TestamentoController::class);
+Route::apiResource('livro',LivroController::class);
+Route::apiResource('versiculo',VersiculoController::class);
+*/
+
+Route::apiResources([
+    'testamento'=> TestamentoController::class,
+    'livro'=> LivroController::class,
+    'versiculo'=> VersiculoController::class,
+]);
+
+```
+
+- 11. Controllers
 
 [Voltar ao Índice](#indice)
 
@@ -105,7 +140,11 @@ sail php artisan make:controller TestamentoController --api
 
 ## <a name="parte6">6 - Seção 6: Autenticação Sanctum</a>
 
-
+- 12. Introdução
+- 13. Registrando usuário e emitindo Token
+- 14. Login
+- 15. Protegendo as rotas
+- 16. Logout
 
 [Voltar ao Índice](#indice)
 
@@ -114,7 +153,8 @@ sail php artisan make:controller TestamentoController --api
 
 ## <a name="parte7">7 - Seção 7: Relacionamentos</a>
 
-
+- 17. Testamento com Livros
+- 18. Livros com Versiculos
 
 [Voltar ao Índice](#indice)
 
@@ -123,7 +163,8 @@ sail php artisan make:controller TestamentoController --api
 
 ## <a name="parte8">8 - Seção 8: Desafios</a>
 
-
+- 19. Desafio 1
+- 20. Resposta do Desafio
 
 [Voltar ao Índice](#indice)
 
@@ -132,7 +173,7 @@ sail php artisan make:controller TestamentoController --api
 
 ## <a name="parte9">9 - Seção 9: Extras</a>
 
-
+- 21. Upload de Imagem
 
 [Voltar ao Índice](#indice)
 
