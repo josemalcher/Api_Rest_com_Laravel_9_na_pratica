@@ -36,7 +36,7 @@ class IdiomaController extends Controller
      */
     public function show(string $id)
     {
-        $idioma = Idioma::find($id);
+        $idioma = Idioma::with('versoes')->find($id);
         if ($idioma) {
             // $idioma->versoes;
             return new IdiomaResource($idioma);

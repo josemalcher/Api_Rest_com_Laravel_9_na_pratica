@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LivroResource;
+use App\Http\Resources\LivrosCollection;
 use App\Models\Livro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -13,7 +15,8 @@ class LivroController extends Controller
      */
     public function index()
     {
-        return Livro::all();
+        // return Livro::all();
+        return new LivrosCollection(Livro::all());
     }
 
     /**
@@ -36,20 +39,21 @@ class LivroController extends Controller
      */
     public function show(string $livro)
     {
-        $livro = Livro::find($livro);
+        $livro = Livro::with('testamento','versiculos','versao'  )->find($livro);
 
         // dd(Storage::disk('public')->url($livro->capa));
 
         if ($livro) {
-            $livro->testamento;
-            $livro->versiculos;
-            $livro->versao;
+            return new LivroResource($livro);
+//            $livro->testamento;
+//            $livro->versiculos;
+//            $livro->versao;
 //            $response = [
 //                'livro' => $livro,
 //                'testamento' => $livro->testamento,
 //                'versiculos' => $livro->versiculos
 //            ];
-            return $livro;
+//            return $livro;
         }
         return response()->json([
             'message' => 'ERRO Pesquisar Livro'

@@ -5,14 +5,8 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class IdiomaResource extends JsonResource
+class VersaoResource extends JsonResource
 {
-    /**
-     * The "data" wrapper that should be applied.
-     *
-     * @var string|null
-     */
-    public static $wrap = 'idioma';
     /**
      * Transform the resource into an array.
      *
@@ -20,11 +14,12 @@ class IdiomaResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // return parent::toArray($request);
         return [
             'id' => $this->id,
             'nome' => $this->nome,
-            'versoes' => new VersoesCollection($this->whenLoaded('versoes')),
+            'abreviacao' => $this->abreviacao,
+            'idioma' => new IdiomaResource  ($this->whenLoaded('idioma')),
+            'livros' => new LivrosCollection($this->whenLoaded('livros')),
 
         ];
     }

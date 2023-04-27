@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\VersaoResource;
 use App\Http\Resources\VersoesCollection;
 use App\Models\Versao;
 use Illuminate\Http\Request;
@@ -36,14 +37,13 @@ class VersaoController extends Controller
      */
     public function show(string $versao)
     {
-        $versao = Versao::find($versao);
+        $versao = Versao::with('idioma', 'livros')->find($versao);
         if ($versao) {
-            $versao->idioma;
-            $versao->livros;
-            return $versao;
+            return new VersaoResource($versao);
         }
+
         return response()->json([
-            'message' => 'ERRO ao PESQUISAR a versão'
+            'message' => 'Erro ao pesquisar a versão'
         ], 404);
     }
 

@@ -5,15 +5,8 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class VersoesCollection extends ResourceCollection
+class LivrosCollection extends ResourceCollection
 {
-    /**
-     * The "data" wrapper that should be applied.
-     *
-     * @var string|null
-     */
-    public static $wrap = 'versoes';
-
     /**
      * Transform the resource collection into an array.
      *
@@ -23,7 +16,7 @@ class VersoesCollection extends ResourceCollection
     {
         //return parent::toArray($request);
         return [
-            'data' => VersaoResource::collection($this->collection),
+            'data' => LivroResource::collection($this->collection),
 
         ];
     }
