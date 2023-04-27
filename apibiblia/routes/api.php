@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         'versiculo' => VersiculoController::class,
     ]);
 
+    Route::post('/logout', [AuthController::class, 'logout']);
+
 });
 
 
