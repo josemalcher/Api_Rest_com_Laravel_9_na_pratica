@@ -39,26 +39,16 @@ class LivroController extends Controller
      */
     public function show(string $livro)
     {
-        $livro = Livro::with('testamento','versiculos','versao'  )->find($livro);
-
-        // dd(Storage::disk('public')->url($livro->capa));
-
+        $livro = Livro::with('testamento', 'versiculos', 'versao')->find($livro);
+        //dd(Storage::disk('public')->url($livro->capa));
         if ($livro) {
+
             return new LivroResource($livro);
-//            $livro->testamento;
-//            $livro->versiculos;
-//            $livro->versao;
-//            $response = [
-//                'livro' => $livro,
-//                'testamento' => $livro->testamento,
-//                'versiculos' => $livro->versiculos
-//            ];
-//            return $livro;
         }
+
         return response()->json([
-            'message' => 'ERRO Pesquisar Livro'
-        ],404);
-        // return Livro::findOrFail($livro);
+            'message' => ' Erro ao pesquisar o livro.'
+        ], 404);
     }
 
     /**
@@ -78,13 +68,13 @@ class LivroController extends Controller
             }
             return response()->json([
                 'message' => 'ERRO ao ATUALIZAR Livro'
-            ],404);
+            ], 404);
 
 
         }
         return response()->json([
             'message' => 'ERRO ao ATUALIZAR Livro'
-        ],404);
+        ], 404);
     }
 
     /**
@@ -99,7 +89,7 @@ class LivroController extends Controller
         }
         return response()->json([
             'message' => 'ERRO ao DELETAR Livro'
-        ],404);
+        ], 404);
         // return Livro::destroy($livro);
     }
 }
