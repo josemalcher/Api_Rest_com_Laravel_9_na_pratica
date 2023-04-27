@@ -169,6 +169,23 @@ sail php artisan make:controller AuthController
 
 - 14. Login
 - 15. Protegendo as rotas
+
+```php
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::apiResources([
+        'testamento' => TestamentoController::class,
+        'livro' => LivroController::class,
+        'versiculo' => VersiculoController::class,
+    ]);
+
+});
+
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+```
+
 - 16. Logout
 
 [Voltar ao Índice](#indice)
