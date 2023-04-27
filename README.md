@@ -352,6 +352,52 @@ class AppServiceProvider extends ServiceProvider
 ## <a name="parte11">11 - Seção 11: HATEOAS</a>
 
 - 25. O que é Hateoas?
+
+HATEOAS é um modelo desenvolvido por Leonard Richardson que traz o modelo REST para um novo nível, e cujo objetivo é ajudar os clientes que consomem o serviço REST, ou seja, nossa Web API, a navegar pelos recursos e saber o que podem fazer tornado as ações da WEB API mais fáceis de entender.
+
+Usando uma explicação o mais simples possível, imagine que você faz uma requisição a uma API, e ela vai retornar um objeto ou coleção de objetos como resposta. Essa seria a WEB API sem usar HATEOAS.
+
+Usando HATEOAS a resposta da API acrescenta também links descritivos que servem para informar como você pode alterar o recurso e informações de como buscar recursos secundários ou relacionados.
+
+Entendendo o HATEAOS na prática:
+
+Vamos tomar um exemplo bem simples muito comum em nosso projeto.
+
+Model Livro
+
+A representação JSON desta classe para um retorno de uma requisição GET de um livro específico seria expresso da seguinte forma:
+
+Corpo de um response REST para : http://localhost/api/livro/1
+
+```json
+{
+    nome => 'Genêsis',
+    posicao => 1,
+    abreviacao => 'gn',
+    testamento_id => 1,
+    versao_id => 1
+}
+```
+
+Se implementássemos o HATEOAS, os serviços que podem ser invocados com aquele recurso também seriam devolvidos pela API. Poderíamos ter uma resposta parecida com a ilustrada abaixo:
+
+```json
+{
+    nome => 'Genêsis' ,
+    posicao => 1,
+    abreviacao => 'gn',
+    testamento_id => 1,
+    versao_id => 1
+    links: [
+        { rel: 'alterar', link: '/api/livro/1' },
+        { rel: 'excluir, link: '/api/livro/1' },
+    ]
+}
+```
+
+Perceba que a própria API informa os serviços disponíveis para o recurso livro, quebrando este acoplamento: o cliente agora não precisa saber o que pode ser feito com aquele recurso, bastando a ele interagir com os hiperlinks que foram devolvidos pela API, hiperlinks estes que expõem as ações que podem ser realizadas.
+
+
 - 26. HATEOAS na prática
 
 [Voltar ao Índice](#indice)
