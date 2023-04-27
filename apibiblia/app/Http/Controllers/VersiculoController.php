@@ -38,6 +38,11 @@ class VersiculoController extends Controller
     {
         $versiculo = Versiculo::find($versiculo);
         if ($versiculo) {
+//            $response = [
+//                'versiculo' => $versiculo,
+//                'livro' => $versiculo->livro,
+//            ];
+            $versiculo->livro;
             return $versiculo;
         }
         return response()->json([

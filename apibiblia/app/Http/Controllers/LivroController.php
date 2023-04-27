@@ -37,11 +37,14 @@ class LivroController extends Controller
     {
         $livro = Livro::find($livro);
         if ($livro) {
-            $response = [
-                'livro' => $livro,
-                'testamento' => $livro->testamento,
-            ];
-            return $response;
+            $livro->testamento;
+            $livro->versiculos;
+//            $response = [
+//                'livro' => $livro,
+//                'testamento' => $livro->testamento,
+//                'versiculos' => $livro->versiculos
+//            ];
+            return $livro;
         }
         return response()->json([
             'message' => 'ERRO Pesquisar Livro'

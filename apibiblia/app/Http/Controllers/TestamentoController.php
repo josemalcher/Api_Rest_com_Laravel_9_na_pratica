@@ -38,11 +38,12 @@ class TestamentoController extends Controller
     {
         $testamento = Testamento::find($testamento);
         if ($testamento) {
-            $response = [
-                'testamento' => $testamento,
-                'livros' => $testamento->livros,
-            ];
-            return $response;
+            $testamento->livros;
+//            $response = [
+//                'testamento' => $testamento,
+//                'livros' => $testamento->livros,
+//            ];
+            return $testamento;
         }
         return response()->json([
             'message' => 'ERRO Pesquisar Testamento'

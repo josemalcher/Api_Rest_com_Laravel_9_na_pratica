@@ -14,4 +14,9 @@ class Livro extends Model
     {
         return $this->belongsTo(Testamento::class);
     }
+
+    public function versiculos()
+    {
+        return $this->hasMany(Versiculo::class);
+    }
 }
