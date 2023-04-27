@@ -256,6 +256,91 @@ sail php artisan storage:link
 ## <a name="parte10">10 - Seção 10: ApiResource</a>
 
 - 22. Introdução e Primeiros Exemplos
+
+```bash
+sail php artisan make:resource IdiomaResource                      
+
+   INFO  Resource [app/Http/Resources/IdiomaResource.php] created successfully.  
+
+```
+
+```php
+class IdiomaResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        // return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'nome' => $this->nome,
+
+        ];
+    }
+}
+```
+
+```php
+  public function show(string $id)
+    {
+        $idioma = Idioma::find($id);
+        if ($idioma) {
+            // $idioma->versoes;
+            return new IdiomaResource($idioma);
+        }
+        return response()->json([
+            'message' => 'Erro ao PESQUISAR o idioma',
+        ], 404);
+    }
+```
+
+
+```bash
+ sail php artisan make:resource VersoesCollection --collection
+
+   INFO  Resource collection [app/Http/Resources/VersoesCollection.php] created successfully.  
+
+```
+
+```php
+class VersoesCollection extends ResourceCollection
+{
+    /**
+     * The "data" wrapper that should be applied.
+     *
+     * @var string|null
+     */
+    public static $wrap = 'versoes';
+
+    /**
+     * Transform the resource collection into an array.
+     *
+     * @return array<int|string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        return parent::toArray($request);
+    }
+}
+```
+
+```php
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        JsonResource::withoutWrapping();
+    }
+}
+```
+
 - 23. ApiResource - Continuação
 - 24. ApiResource - Finalizando
 

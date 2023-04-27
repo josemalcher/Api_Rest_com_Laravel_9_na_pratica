@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\VersoesCollection;
 use App\Models\Versao;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class VersaoController extends Controller
      */
     public function index()
     {
-        return Versao::all();
+        return new VersoesCollection(Versao::select('id', 'nome', 'abreviacao')->get());
     }
 
     /**
