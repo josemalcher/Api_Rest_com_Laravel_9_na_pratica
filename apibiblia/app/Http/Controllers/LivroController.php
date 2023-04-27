@@ -39,6 +39,7 @@ class LivroController extends Controller
         if ($livro) {
             $livro->testamento;
             $livro->versiculos;
+            $livro->versao;
 //            $response = [
 //                'livro' => $livro,
 //                'testamento' => $livro->testamento,

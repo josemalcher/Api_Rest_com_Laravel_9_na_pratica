@@ -206,6 +206,27 @@ Route::post('/login', [AuthController::class, 'login']);
 ## <a name="parte8">8 - Seção 8: Desafios</a>
 
 - 19. Desafio 1
+
+```
+Desafio 1
+
+Objetivo criar 2 tabelas e relaciona-las com o restante.
+
+Utilize Migrations
+
+Tabela 1
+Idiomas - Cadastro simples id, nome
+
+Tabela 2
+Traducoes - Id, nome, abreviacao, idioma_id (Chave Estrangeira)
+
+Crie os Models necessários.
+
+Crie os relacionamentos necessários.
+
+Crie um Crud Completo de ambos.
+```
+
 - 20. Resposta do Desafio
 
 [Voltar ao Índice](#indice)
@@ -224,7 +245,9 @@ Route::post('/login', [AuthController::class, 'login']);
 
 ## <a name="parte10">10 - Seção 10: ApiResource</a>
 
-
+- 22. Introdução e Primeiros Exemplos
+- 23. ApiResource - Continuação
+- 24. ApiResource - Finalizando
 
 [Voltar ao Índice](#indice)
 
@@ -233,7 +256,8 @@ Route::post('/login', [AuthController::class, 'login']);
 
 ## <a name="parte11">11 - Seção 11: HATEOAS</a>
 
-
+- 25. O que é Hateoas?
+- 26. HATEOAS na prática
 
 [Voltar ao Índice](#indice)
 
@@ -242,7 +266,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 ## <a name="parte12">12 - Seção 12: Links Úteis</a>
 
-
+- 27. Links Úteis
 
 [Voltar ao Índice](#indice)
 
@@ -251,7 +275,11 @@ Route::post('/login', [AuthController::class, 'login']);
 
 ## <a name="parte13">13 - Seção 13: Atualizações</a>
 
-
+- 28. Comunicado
+- 29. Introdução, Clone Git e Instalação de pacotes
+- 30. Seeders
+- 31. Filtros
+- 32. Scope Filters
 
 [Voltar ao Índice](#indice)
 
@@ -260,7 +288,10 @@ Route::post('/login', [AuthController::class, 'login']);
 
 ## <a name="parte14">14 - Seção 14: Frontend</a>
 
-
+- 33. Instalando o VueJs
+- 34. Instalando o Tailwind Css
+- 35. Definindo Menu, Home e incluindo Router View
+- 36. Finalizando o Home e Consumindo a API com AXIOS
 
 [Voltar ao Índice](#indice)
 

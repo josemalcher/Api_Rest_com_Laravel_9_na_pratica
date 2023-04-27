@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Livro extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome', 'posicao', 'abreviacao', 'testamento_id'];
+    protected $fillable = ['nome', 'posicao', 'abreviacao', 'testamento_id', 'versao_id'];
 
     public function testamento()
     {
@@ -18,5 +18,10 @@ class Livro extends Model
     public function versiculos()
     {
         return $this->hasMany(Versiculo::class);
+    }
+
+    public function versao()
+    {
+        return $this->belongsTo(Idioma::class);
     }
 }
