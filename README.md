@@ -238,6 +238,16 @@ Crie um Crud Completo de ambos.
 
 - 21. Upload de Imagem
 
+Tornar a pasta pública
+
+```
+sail php artisan storage:link
+
+   INFO  The [public/storage] link has been connected to [storage/app/public].  
+
+```
+
+
 [Voltar ao Índice](#indice)
 
 ---

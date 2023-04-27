@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Livro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LivroController extends Controller
 {
@@ -36,6 +37,9 @@ class LivroController extends Controller
     public function show(string $livro)
     {
         $livro = Livro::find($livro);
+
+        // dd(Storage::disk('public')->url($livro->capa));
+
         if ($livro) {
             $livro->testamento;
             $livro->versiculos;
@@ -58,10 +62,21 @@ class LivroController extends Controller
      */
     public function update(Request $request, string $livro)
     {
+        $patch = $request->capa->store('capa_livro', 'public');
+
         $livro = Livro::find($livro);
         if ($livro) {
-            $livro->update($request->all());
-            return $livro;
+
+            $livro->capa = $patch;
+
+            if ($livro->save()) {
+                return $livro;
+            }
+            return response()->json([
+                'message' => 'ERRO ao ATUALIZAR Livro'
+            ],404);
+
+
         }
         return response()->json([
             'message' => 'ERRO ao ATUALIZAR Livro'
