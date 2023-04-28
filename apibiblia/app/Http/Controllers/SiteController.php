@@ -20,12 +20,14 @@ class SiteController extends Controller
             });
 
         })
-            ->when($capitulo, function ($query) use ($capitulo){
-                $query->where('capitulo', $capitulo);
-            })
-            ->when($versiculo, function ($query) use ($versiculo){
-                $query->where('versiculo', $versiculo);
-            })
+            ->filters(['capitulo' => $capitulo, 'versiculo' => $versiculo])
+//            ->capitulo($capitulo)
+//            ->when($capitulo, function ($query) use ($capitulo){
+//                $query->where('capitulo', $capitulo);
+//            })
+//            ->when($versiculo, function ($query) use ($versiculo){
+//                $query->where('versiculo', $versiculo);
+//            })
             ->get();
         return response($versiculos, 200);
     }
