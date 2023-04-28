@@ -14,6 +14,6 @@ class Versiculo extends Model
 
     public function livro()
     {
-        return $this->belongsTo(Versiculo::class);
+        return $this->belongsTo(Livro::class);
     }
 }

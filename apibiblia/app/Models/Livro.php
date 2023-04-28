@@ -22,6 +22,6 @@ class Livro extends Model
 
     public function versao()
     {
-        return $this->belongsTo(Idioma::class);
+        return $this->belongsTo(Versao::class);
     }
 }

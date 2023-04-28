@@ -67,7 +67,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 //site publico
-Route::get('/site/{versao}', [SiteController::class, 'ler_a_biblia']);
+Route::get('/site/{versao}/{livro?}/{capitulo?}/{versiculo?}', [SiteController::class, 'ler_a_biblia']);
 
 
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
