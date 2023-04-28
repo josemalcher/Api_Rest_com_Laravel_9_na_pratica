@@ -400,6 +400,32 @@ Perceba que a própria API informa os serviços disponíveis para o recurso livr
 
 - 26. HATEOAS na prática
 
+```php
+class IdiomaResource extends JsonResource
+{
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'nome' => $this->nome,
+            'versoes' => new VersoesCollection($this->whenLoaded('versoes')),
+            'links' => [
+                [
+                    'rel' => 'Alterar um idioma',
+                    'type' => 'PUT',
+                    'link' => route('idioma.update', $this->id)
+                ],
+                [
+                    'rel' => 'Excluir um idioma',
+                    'type' => 'DELETE',
+                    'link' => route('idioma.destroy', $this->id)
+                ]
+            ]
+        ];
+    }
+}
+```
+
 [Voltar ao Índice](#indice)
 
 ---
@@ -408,6 +434,7 @@ Perceba que a própria API informa os serviços disponíveis para o recurso livr
 ## <a name="parte12">12 - Seção 12: Links Úteis</a>
 
 - 27. Links Úteis
+
 
 [Voltar ao Índice](#indice)
 
