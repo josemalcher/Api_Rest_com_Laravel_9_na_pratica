@@ -1,3 +1,4 @@
+
 # Api Rest com Laravel 9 na prática
 
 https://www.udemy.com/course/api-rest-com-laravel-9-na-pratica
@@ -435,6 +436,13 @@ class IdiomaResource extends JsonResource
 
 - 27. Links Úteis
 
+https://candied-gooseberry-205.notion.site/Criando-API-REST-com-Laravel-9-606573f493e9494b9b7abc7ac1298828
+
+Modelo :
+
+![img/modelo.png](img/modelo.png)
+
+3. GitHub: https://github.com/marcelobianco/apibiblia
 
 [Voltar ao Índice](#indice)
 
