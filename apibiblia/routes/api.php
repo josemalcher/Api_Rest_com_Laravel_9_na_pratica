@@ -2,14 +2,13 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{
-    AuthController,
+use App\Http\Controllers\{AuthController,
+    SiteController,
     TestamentoController,
     VersiculoController,
     LivroController,
     IdiomaController,
-    VersaoController
-};
+    VersaoController};
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +65,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+//site publico
+Route::get('/site/{versao}', [SiteController::class, 'ler_a_biblia']);
+
 
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
